@@ -251,6 +251,8 @@
 % if there is a needed pagebreak nearby.
 \newcommand{\blankline}{\quad\pagebreak[2]}
 \newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+\newcommand{\quarterblankline}{\quad\vspace{0.11\baselineskip}\pagebreak[3]}
+
 
 % Uses hyperref to link DOI
 \newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
@@ -266,12 +268,12 @@
 
 \begin{document} 
 
-% \begin{spanish}
-% \include{espanol}
-% \end{spanish}
-\begin{english}
-\include{british}
-\end{english}
+\begin{spanish}
+\include{espanol}
+\end{spanish}
+% \begin{english}
+% \include{british}
+% \end{english}
 
 \end{document}
 
