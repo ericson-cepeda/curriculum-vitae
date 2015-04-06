@@ -129,7 +129,7 @@
 \setlength{\footpageshift}{0.5\textwidth + 0.5\marginparsep +
 0.5\marginparwidth-2in} \lfoot{\hspace{\footpageshift}%
        \parbox{4in}{\, \hfill %
-                    \arabic{page} de \protect\pageref*{LastPage} % +LP
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
 %                    \arabic{page}                               % -LP
                     \hfill \,}}
 % \fancyhf[HL]{\setlength{\unitlength}{1in}
@@ -152,14 +152,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Fonts and Tweaks for XeLaTeX
+\setmainfont{Adobe Caslon Pro}
 \font\headers="Corbel:letterspace=5" at 20pt
-\font\SectionHeaders="Corbel:letterspace=5" at 14pt
+\font\SectionHeaders="Calibri:letterspace=5" at 14pt
 %\font\headers="Qlassik Bold:letterspace=5" at 22pt
 %\font\SectionHeaders="Qlassik Bold:letterspace=5" at 14pt
 \font\Career="Corbel:color=2b2b2b" at 13pt 
-\font\Text="Corbel:color=2b2b2b" at 10pt 
+\font\Text="Adobe Caslon Pro:color=2b2b2b" at 10pt 
+\font\smallText="Calibri:color=2b2b2b" at 10pt 
 \font\TextAlt="Corbel:color=CC3300" at 11pt
-\font\TextSC="Corbel:+smcp, color=2b2b2b" at 11pt 
+\font\TextSC="Calibri:+smcp, color=2b2b2b" at 11pt 
 \font\slash="Corbel:+zero, color=2b2b2b" at 20pt
 \font\slashAlt="Corbel:+zero, color=CC3300" at 15pt
 \font\ContactHeaders="Corbel" at 170 pt
