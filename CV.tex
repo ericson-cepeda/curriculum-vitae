@@ -19,7 +19,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Don't like 10pt? Try 11pt or 12pt
-\documentclass[10pt
+\documentclass[10.9pt
 %							,spanish
 %							,draft
 							]{article}
@@ -27,17 +27,24 @@
 \usepackage{calc}
 %symbols - the ones you see on the left of the email and of the phone
 \usepackage{bbding} 
+% \usepackage{marvosym} 
 %Colors/Graphics
 \usepackage{color,graphicx}
 \usepackage[table,usenames,dvipsnames]{xcolor}
+\usepackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
 \usepackage{tikz}
 \usetikzlibrary{backgrounds}
+\usepackage{background}
 \usepackage{wrapfig}
+
+\usepackage{fontawesome}
+% \usepackage{boxedminipage}
 % This is a helpful package that puts math inside length specifications
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{xltxtra}
 \usepackage{polyglossia}
+\usepackage{setspace}
 \setdefaultlanguage{spanish}
 \setotherlanguages{english}
 % \usepackage[british,spanish]{babel}
@@ -93,7 +100,7 @@
 %% Use these lines for letter-sized paper
 \usepackage[paper=letterpaper,
             %includefoot, % Uncomment to put page number above margin
-            marginparwidth=1.2in,     % Length of section titles
+            marginparwidth=0.92in,     % Length of section titles
             marginparsep=0.5in,       % Space between titles and text
             margin=1in,               % 1 inch margins
             includemp]{geometry}
@@ -140,32 +147,47 @@
 % Finally, give us PDF bookmarks
 \usepackage{color,hyperref}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.3}%{HTML}{F4D455}
-\hypersetup{colorlinks,breaklinks,
-            linkcolor=darkblue,urlcolor=darkblue,
-            anchorcolor=darkblue,citecolor=darkblue}
+\definecolor{darkgreen}{HTML}{066769}
+\definecolor{namebox}{HTML}{45B6BC}
 
+\definecolor{stripe}{HTML}{E4F4F4}
 \definecolor{shade}{HTML}{D4D7FE}	%light blue shade
 \definecolor{text1}{HTML}{2b2b2b}		%text is almost black
+\definecolor{text2}{HTML}{2D2D2D}		%text is almost black
+\definecolor{textitem}{HTML}{5DC8CE}		%text is almost black
+\definecolor{subtitle}{HTML}{A1DFE3}		%text is almost black
 \definecolor{backgroundColor}{rgb}{0.0,0.0,0.3}%{HTML}{183090}% {HTML}{F4D455}
 %%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Fonts and Tweaks for XeLaTeX
-\setmainfont{Adobe Caslon Pro}
-\font\headers="Corbel:letterspace=5" at 20pt
+
+
+\setmainfont[Color=text2]{Calibri}
+\font\headers="Calibri:letterspace=5" at 20pt
 \font\SectionHeaders="Calibri:letterspace=5" at 14pt
 %\font\headers="Qlassik Bold:letterspace=5" at 22pt
 %\font\SectionHeaders="Qlassik Bold:letterspace=5" at 14pt
-\font\Career="Corbel:color=2b2b2b" at 13pt 
-\font\Text="Adobe Caslon Pro:color=2b2b2b" at 10pt 
-\font\smallText="Calibri:color=2b2b2b" at 10pt 
-\font\TextAlt="Corbel:color=CC3300" at 11pt
-\font\TextSC="Calibri:+smcp, color=2b2b2b" at 11pt 
-\font\slash="Corbel:+zero, color=2b2b2b" at 20pt
+\font\Career="Calibri:color=2b2b2b" at 13pt 
+\font\Text="Calibri:color=2D2D2D" at 11pt 
+\font\TextAlt="Calibri:color=CC3300" at 10.8pt
+\font\TextSC="Bebas Neue:+smcp, color=066769, letterspace=4" at 16pt 
+\font\slash="Bebas Neue:+zero, color=2b2b2b, letterspace=4" at 34.5pt
+\font\slashWhite="Bebas Neue:+zero, color=fffffe, letterspace=4" at 34.5pt
+\font\slashGray="Bebas Neue:+zero, color=2D2D2D, letterspace=4" at 34.5pt
 \font\slashAlt="Corbel:+zero, color=CC3300" at 15pt
 \font\ContactHeaders="Corbel" at 170 pt
 \font\trick="Corbel:color=FFFFFF" at 0.1 pt
+\newfontfamily\FA[Color=namebox]{FontAwesome Regular}
+
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkgreen,urlcolor=darkgreen,
+            anchorcolor=darkgreen,citecolor=darkgreen,filecolor=darkgreen}
+\makeatletter
+\def\HyColor@@@@UseColor#1\@nil{\addfontfeatures{Color=#1}}
+\makeatother
+
 \tikzset{background/.style={fill=backgroundColor}}
 \tikzset{background grid/.style = {thick, draw  = blue, step = .5cm}}
 %Thumbnail for the Portfolio
@@ -191,13 +213,20 @@
 % Usage: \makeheading{name}
 %
 % Place at top of document. It should be the first thing.
-\newcommand{\makeheading}[1]%%
+\newcommand{\makeheading}[2]%%
         {\hspace*{-\marginparsep minus \marginparwidth}%
-         \begin{minipage}[t]{\textwidth + \marginparwidth +\marginparsep}
-                {\large\slash #1}\\[-0.15\baselineskip]%
-                 \rule{\columnwidth}{1pt}%
+         \begin{minipage}[l]{\textwidth + \marginparwidth
+         +\marginparsep} {\large\slash\setlength{\fboxsep}{2.2mm}
+                \hspace*{-2\fboxsep}\colorbox{namebox}{\slashWhite #1}
+                \slashGray #2}%
          \end{minipage}}
-
+         
+ \newcommand{\placetextbox}[3]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \setbox0=\hbox{#3}% Put <stuff> in a box
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(\LenToUnit{#1\paperwidth},\LenToUnit{#2\paperheight}){\vtop{{\null}\makebox[0pt][c]{#3}}}%
+  }%
+}%
 % The section headings
 %
 % Usage: \section{section name}
@@ -223,10 +252,10 @@
          \phantomsection\addcontentsline{toc}{section}{#1}%
          \hspace{0in}%
          \marginpar{ 
-         \raggedright\TextSC#1}\Text#2}
+         \vspace{-8pt}\raggedright\setstretch{1.45}\TextSC#1}\Text#2}
 
 % An itemize-style list with lots of space between items
-\newenvironment{outerlist}[1][\enskip\textbullet]%
+\newenvironment{outerlist}[1][\textbullet]%
         {\begin{itemize}[#1]}{\end{itemize}%
          \vspace{-.6\baselineskip}}
 
@@ -239,7 +268,7 @@
         {\end{list}\vspace{-.6\baselineskip}}
 
 % An itemize-style list with little space between items
-\newenvironment{innerlist}[1][\enskip\textbullet]%
+\newenvironment{innerlist}[1][\textbullet]%
         {\begin{compactitem}[#1]}{\end{compactitem}}
 
 % An environment IDENTICAL to innerlist that has better pre-list spacing
@@ -261,6 +290,12 @@
 \newcommand\doi[1]{doi:\doilink{#1}}
  
 \newlength{\rcollength}\setlength{\rcollength}{2.3in}%
+
+\SetBgScale{1}
+\SetBgAngle{0}
+\SetBgColor{stripe}
+\SetBgContents{\rule{1.5in}{\paperheight}}
+\SetBgHshift{-.5\paperwidth+1.577in}
 
 %%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
