@@ -19,7 +19,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Don't like 10pt? Try 11pt or 12pt
-\documentclass[10.9pt
+\documentclass[11pt
 %							,spanish
 %							,draft
 							]{article}
@@ -171,15 +171,15 @@
 %\font\SectionHeaders="Qlassik Bold:letterspace=5" at 14pt
 \font\Career="Calibri:color=2b2b2b" at 13pt 
 \font\Text="Calibri:color=2D2D2D" at 11pt 
-\font\TextAlt="Calibri:color=CC3300" at 10.8pt
+\font\TextAlt="Calibri:color=CC3300" at 11pt
 \font\TextSC="Bebas Neue:+smcp, color=066769, letterspace=4" at 16pt 
 \font\slash="Bebas Neue:+zero, color=2b2b2b, letterspace=4" at 34.5pt
 \font\slashWhite="Bebas Neue:+zero, color=fffffe, letterspace=4" at 34.5pt
-\font\slashGray="Bebas Neue:+zero, color=2D2D2D, letterspace=4" at 34.5pt
+\font\slashGray="Bebas Neue:+zero, color=808080, letterspace=4" at 34.5pt
 \font\slashAlt="Corbel:+zero, color=CC3300" at 15pt
 \font\ContactHeaders="Corbel" at 170 pt
 \font\trick="Corbel:color=FFFFFF" at 0.1 pt
-\newfontfamily\FA[Color=namebox]{FontAwesome Regular}
+\newfontfamily\FA[Color=darkgreen]{FontAwesome Regular}
 
 \hypersetup{colorlinks,breaklinks,
             linkcolor=darkgreen,urlcolor=darkgreen,
@@ -252,7 +252,7 @@
          \phantomsection\addcontentsline{toc}{section}{#1}%
          \hspace{0in}%
          \marginpar{ 
-         \vspace{-8pt}\raggedright\setstretch{1.45}\TextSC#1}\Text#2}
+         \vspace{-8pt}\raggedright\setstretch{1.4}\TextSC#1}\Text#2}
 
 % An itemize-style list with lots of space between items
 \newenvironment{outerlist}[1][\textbullet]%
@@ -273,7 +273,7 @@
 
 % An environment IDENTICAL to innerlist that has better pre-list spacing
 % when used as the first thing in a \section
-\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+\newenvironment{loneinnerlist}[1][\textbullet]%
         {\vspace{-\baselineskip}\begin{compactitem}[#1]}
         {\end{compactitem}\vspace{-.6\baselineskip}}
 
@@ -282,8 +282,8 @@
 % if there is a needed pagebreak nearby.
 \newcommand{\blankline}{\quad\pagebreak[2]}
 \newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
-\newcommand{\quarterblankline}{\quad\vspace{0.11\baselineskip}\pagebreak[3]}
-
+\newcommand{\quarterblankline}{\quad\vspace{0.1\baselineskip}\pagebreak[3]}
+\newcommand{\smallblankline}{\vspace{0.3\baselineskip}\pagebreak[3]}
 
 % Uses hyperref to link DOI
 \newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}

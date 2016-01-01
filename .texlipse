@@ -1,5 +1,5 @@
 #TeXlipse project settings
-#Mon Jun 11 01:40:13 COT 2012
+#Thu Apr 23 21:07:07 COT 2015
 markTmpDer=true
 builderNum=7
 outputDir=
@@ -8,7 +8,7 @@ bibrefDir=
 outputFormat=pdf
 tempDir=tmp
 mainTexFile=CV.tex
-outputFile=Ericson.Cepeda.pdf
+outputFile=ericson-cepeda_cv.pdf
 langSpell=es
 markDer=true
 srcDir=
